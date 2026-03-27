@@ -151,12 +151,12 @@ lostfound/
 ### 🏠 Home page before login
 <img width="1910" height="966" alt="Screenshot 2026-03-27 115547" src="https://github.com/user-attachments/assets/dc34bdd9-e9fb-469f-9c0d-19a8755f7e46" />
 
-### 🏠 Home Page after login
-<img width="1915" height="960" alt="Screenshot 2026-03-27 114822" src="https://github.com/user-attachments/assets/740cbddb-ba28-4b13-8713-1890c984c985" />
-
 ### 🔐 login & signup
 <img width="1905" height="960" alt="Screenshot 2026-03-27 114951" src="https://github.com/user-attachments/assets/dc599702-6a9e-43fd-b640-3c84c98ef68c" />
 <img width="1907" height="964" alt="Screenshot 2026-03-27 115024" src="https://github.com/user-attachments/assets/3eca21b3-4f11-4fe2-b5e6-67476ba83bfc" />
+
+### 🏠 Home Page after login
+<img width="1915" height="960" alt="Screenshot 2026-03-27 114822" src="https://github.com/user-attachments/assets/740cbddb-ba28-4b13-8713-1890c984c985" />
 
 ### ➕ Add/Report items
 <img width="1905" height="965" alt="Screenshot 2026-03-27 114929" src="https://github.com/user-attachments/assets/8e7030f2-d743-405a-8aa6-5c5ec2897125" />
