@@ -105,11 +105,13 @@ python manage.py runserver
 
 ```
 lostfound/
-│── chat/                    # Chat system
-│── items/                   # Lost & Found items
-│── users/                   # Authentication
-│── templates/               # HTML files
-│── static/                  # CSS, JS, Images
+│── accounts/                  # Authentication                                
+│── chat/                      # Chat system
+│── items/                     # Lost & Found items
+│── lostfound/                 # lostfound app
+│── media/                     
+│── static/                    # CSS, JS, Images             
+│── templates/                 # HTML files                  
 │── db.sqlite3
 ```
 
