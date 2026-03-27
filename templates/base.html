@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lost & Found Portal</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<div id="particles-js"></div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="/">
+  <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" style="vertical-align: middle; margin-right:8px;">
+    <circle cx="32" cy="16" r="6" fill="#FFCC80"/>
+    <rect x="28" y="22" width="8" height="16" fill="#FFB74D"/>
+    <rect x="28" y="38" width="3" height="10" fill="#6D4C41">
+      <animateTransform attributeName="transform" type="translate" values="0 0;1 2;0 0;-1 2;0 0" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="33" y="38" width="3" height="10" fill="#6D4C41">
+      <animateTransform attributeName="transform" type="translate" values="0 0;-1 2;0 0;1 2;0 0" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="24" y="22" width="4" height="12" fill="#FFCC80" transform="rotate(20 24 22)">
+      <animateTransform attributeName="transform" type="rotate" values="20 24 22;-20 24 22;20 24 22" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="36" y="22" width="4" height="12" fill="#FFCC80" transform="rotate(-20 36 22)">
+      <animateTransform attributeName="transform" type="rotate" values="-20 36 22;20 36 22;-20 36 22" dur="0.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="38" y="30" width="6" height="6" rx="1" ry="1" fill="#FF7043">
+      <animateTransform attributeName="transform" type="translate" values="0 0;0 -2;0 0" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </svg>
+  <span style="margin-left:8px; font-weight:bold; color:white;">LostFound</span>
+</a>
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto">
+
+    <li class="nav-item">
+        <a class="nav-link" href="/">HOME</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/items">ALL ITEMS</a>
+    </li>
+
+    {% if user.is_authenticated %}
+
+    <li class="nav-item">
+        <a class="nav-link" href="/add">REPORT ITEM</a>
+    </li>
+
+
+   
+
+    <li class="nav-item">
+        <a class="nav-link" href="/logout">LOGOUT</a>
+    </li>
+
+     <!-- Username -->
+    <li class="nav-item d-flex align-items-center">
+        <span class="nav-link" style="color:white; font-weight:bold;">
+            HEY 🙋, {{ user.username|capfirst }}
+        </span>
+    </li>
+
+    {% else %}
+
+    <li class="nav-item">
+        <a class="nav-link" href="/login">LOGIN</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="/signup">SIGNUP</a>
+    </li>
+
+    {% endif %}
+
+</ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+    {% block content %}{% endblock %}
+</div>
+
+
+
+<div class="footer-bottom">
+
+<p>© 2026 Lost & Found Portal | Developed by @nikhilmishra</p>
+
+</div>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <!-- Base.html me body me sabse pehle -->
+<div id="particles-js"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+<script>
+particlesJS("particles-js", {
+    particles: {
+        number: { value: 80 },
+        size: { value: 3 },
+        move: { speed: 2 },
+        line_linked: { enable: true }
+    }
+});
+
+// Dark/Light toggle
+const toggleBtn = document.getElementById('mode-toggle');
+
+toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    document.body.classList.toggle('dark-mode');
+    if(document.body.classList.contains('light-mode')){
+        toggleBtn.textContent = '🌞 Light';
+        localStorage.setItem('theme','light');
+    } else {
+        toggleBtn.textContent = '🌙 Dark';
+        localStorage.setItem('theme','dark');
+    }
+});
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    if(localStorage.getItem('theme') === 'light'){
+        document.body.classList.add('light-mode');
+        document.body.classList.remove('dark-mode');
+        toggleBtn.textContent = '🌞 Light';
+    } else {
+        document.body.classList.add('dark-mode');
+        document.body.classList.remove('light-mode');
+        toggleBtn.textContent = '🌙 Dark';
+    }
+});
+</script>
+</script>
+
+</body>
+</html>

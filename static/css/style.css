@@ -1,0 +1,521 @@
+/* Body & background */
+body {
+    margin:0;
+    font-family:Arial;
+    color:white;
+    background:#0f2027;
+    overflow-x:hidden;
+}
+
+/* Particles canvas */
+#particles-js {
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:-1;
+}
+
+/* Navbar */
+/* Navbar basic styling */
+.navbar {
+    position: fixed;          /* Hamesha top par rahe */
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;        /* Default dark background */
+    color: white;
+    z-index: 1000;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s, color 0.3s;  /* Smooth dark/light transition */
+}
+
+/* Navbar links */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: black;
+    color: rgb(243, 238, 238);
+    z-index: 1000;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.5s, color 0.5s;
+}
+
+/* Links and brand */
+.navbar .nav-link,
+.navbar-brand {
+    color: white;
+    transition: color 0.5s;
+}
+
+/* Hover on navbar changes mode */
+.navbar:hover {
+    background: #121212;   /* White background on hover */
+}
+
+.navbar:hover .nav-link,
+.navbar:hover .navbar-brand {
+    color: #e2dddd;        /* Black text on hover */
+}
+
+/* Optional hover effect on links */
+.navbar .nav-link:hover {
+    color: #c9ac38;
+}
+
+
+
+/* Hero Section */
+.hero {
+    text-align:center;
+    padding-top:120px;
+    animation:fadeIn 2s;
+}
+.hero h1 { font-size:60px; font-weight:bold; }
+.hero p { font-size:22px; }
+.btn-main { padding:12px 30px; font-size:18px; margin-top:20px; }
+
+/* Cards */
+.item-card {
+    background:rgba(255,255,255,0.1);
+    border:none;
+    backdrop-filter:blur(15px);
+    color:white;
+    margin-top:20px;
+    transition:0.3s;
+}
+.item-card:hover { transform:scale(1.05); }
+
+
+.footer-bottom{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.1);
+    margin-top:40px;
+    padding-top:15px;
+    font-size:14px;
+    color:#aaa;
+}
+/* social icons */
+
+.social-icons{
+    margin-top:10px;
+}
+
+.social-icons a{
+    display:inline-block;
+    margin-right:10px;
+    font-size:20px;
+    background:#222;
+    padding:8px 12px;
+    border-radius:50%;
+    color:white;
+    transition:0.3s;
+}
+
+.social-icons a:hover{
+    background:#ff9800;
+    transform:translateY(-3px);
+}
+
+
+
+.info-section {
+    margin-top: 120px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-img {
+    width: 250px;   /* 👈 chhoti image */
+    height: auto;
+    border-radius: 10px;
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-title {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.info-text {
+    font-size: 18px;
+    color: #ddd;
+    line-height: 1.8;
+    text-align: justify;   /* 👈 paragraph feel */
+}
+
+/* Animations */
+@keyframes fadeIn { from{opacity:0; transform:translateY(40px);} to{opacity:1; transform:translateY(0);} }
+@keyframes float { 0%{transform:translateY(0);} 50%{transform:translateY(-15px);} 100%{transform:translateY(0);} }
+
+/* Dark and Light mode */
+#mode-toggle {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+#mode-toggle:hover {
+    background-color: rgba(255,255,255,0.2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+body.dark-mode {
+  background: #0f2027;
+  color: white;
+}
+
+body.light-mode {
+  background: #5b575782;
+  color: black;
+}
+
+/* Navbar for light mode */
+body.light-mode .navbar {
+  background: #3b3a3a58;
+}
+
+body.light-mode .navbar .nav-link {
+  color: black !important;
+}
+
+body.light-mode .navbar-brand span {
+  color: black;
+}
+
+/* Footer for light mode */
+body.light-mode .footer {
+  background: linear-gradient(135deg,#eee,#ccc);
+  color: black;
+}
+
+body.light-mode .footer-section p {
+  color: #333;
+}
+
+body.light-mode .item-card {
+  background: rgba(63, 62, 62, 0.8);
+  color: black;
+}
+
+/* Search Box Container */
+.search-box {
+    max-width: 500px;
+    margin: 30px auto;
+}
+
+/* Search Input */
+.search-input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 30px; /* round edges */
+    background: rgba(255,255,255,0.05); /* very light background */
+    color: white;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+/* Hover / focus effect */
+.search-input:focus {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+}
+
+/* Light mode adjustments */
+body.light-mode .search-input {
+    background: rgba(255,255,255,0.05); /* still subtle */
+    color: white;
+    border-color: rgba(255,255,255,0.3);
+}
+
+body.light-mode .search-input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+body.light-mode .search-input:focus {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+}
+
+/* Split letters animation */
+.animated-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: scale(0.5) translateY(20px); /* thoda niche se start */
+  transition: all 0.4s ease;
+  margin-right: 6px;  /* letter spacing */
+}
+
+.animated-letter.show {
+  opacity: 1;
+  transform: scale(1.2) translateY(0); /* pop + slide */
+}
+.item-card {
+    background: rgba(255,255,255,0.1);
+    border-radius:15px;
+    overflow:hidden;
+    margin:15px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(15px);
+}
+
+.item-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+}
+
+.item-image {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.item-content { padding:15px; }
+.status.found { background:#4CAF50; color:white; padding:2px 6px; border-radius:5px; }
+.status.lost { background:#F44336; color:white; padding:2px 6px; border-radius:5px; }
+
+.add-item-card {
+    display: flex;
+    background: rgba(255,255,255,0.05); /* very subtle, no blur */
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 50px;
+    align-items: center;
+    gap: 30px;
+}
+
+.avatar-svg svg {
+    width: 100px;
+    height: 100px;
+}
+
+.animated-form input, .animated-form select, .animated-form textarea {
+    background: rgba(255,255,255,0.1); /* no blur */
+    border: none;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    color: white;
+}
+
+.animated-form input:focus, .animated-form select:focus, .animated-form textarea:focus {
+    outline: none;
+    box-shadow: 0 0 6px #FF4500;
+}
+
+.btn-primary {
+    font-size: 14px;  /* smaller button */
+    padding: 5px 15px;
+}
+
+body{
+
+margin:0;
+font-family:sans-serif;
+background:#0f2027;
+
+}
+
+/* container */
+
+.auth-container{
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+height:100vh;
+
+}
+
+/* card */
+
+.auth-card{
+
+width:380px;
+padding:40px;
+
+background:#111;
+
+border-radius:10px;
+
+text-align:center;
+
+}
+
+/* title */
+
+.auth-card h2{
+
+color:white;
+
+}
+
+/* input */
+
+.auth-card input{
+
+width:100%;
+padding:12px;
+
+margin:10px 0;
+
+border:none;
+
+border-radius:6px;
+
+}
+
+/* button */
+
+.auth-card button{
+
+width:100%;
+padding:10px;
+
+background:#ff6a00;
+
+border:none;
+
+color:white;
+
+border-radius:6px;
+
+cursor:pointer;
+
+}
+
+/* About section text */
+
+.info-title{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:20px;
+    letter-spacing:1px;
+}
+
+.info-text{
+    font-size:17px;
+    line-height:1.8;
+    color:#ddd;
+    text-align:justify;
+    margin-bottom:15px;
+}
+
+/* responsive fix */
+
+@media (max-width:768px){
+
+.info-title{
+    font-size:26px;
+    text-align:center;
+}
+
+.info-text{
+    text-align:center;
+}
+
+}
+
+.chat-wrapper{
+max-width:700px;
+margin:130px auto;
+background:#111;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+}
+
+.chat-header{
+background:#000;
+color:white;
+padding:15px;
+font-size:20px;
+font-weight:600;
+text-align:center;
+border-bottom:1px solid #333;
+}
+
+.chat-box{
+height:400px;
+overflow-y:auto;
+padding:20px;
+background:rgb(143, 175, 159);
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.chat-message{
+padding:10px 15px;
+border-radius:20px;
+max-width:70%;
+font-size:15px;
+}
+
+.my-msg{
+background:#4caf50;
+align-self:flex-end;
+color:white;
+}
+
+.other-msg{
+background:#333;
+align-self:flex-start;
+color:white;
+}
+
+.chat-form{
+display:flex;
+border-top:1px solid #333;
+}
+
+.chat-form input{
+flex:1;
+padding:12px;
+border:none;
+outline:none;
+background:#222;
+color:white;
+}
+
+.chat-form button{
+width:60px;
+background:#4caf50;
+border:none;
+color:white;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.chat-form button:hover{
+background:#66bb6a;
+}

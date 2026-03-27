@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="hero container">
+  <h1 id="animated-title">LOST AND FOUND PORTAL</h1>
+  <p>Helping people reconnect with their lost items</p>
+
+  
+
+  <div class="search-box">
+    <form action="/items/" method="GET">
+
+      <input 
+      type="text" 
+      name="q" 
+      class="form-control search-input" 
+      placeholder="Search lost items..."
+      >
+
+    </form>
+</div>
+
+<div class="info-section container mt-5">
+    <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" class="info-img" alt="lost and found">
+        </div>
+        <!-- Text -->
+        <div class="col-md-6">
+            <h2 class="info-title">ABOUT OUR LOST & FOUND PORTAL</h2>
+            <p class="info-text">
+                Our Lost & Found Portal is a user-friendly web application designed to help people reconnect with their lost belongings in a quick and efficient way. 🚀 Users can easily report lost items by providing important details such as description, location, date, and images, while others can post items they have found, creating a shared platform for recovery. 📦 The system allows users to browse available items and search based on categories, keywords, or locations, making the process simple and organized.
+            </p>
+        </div>
+    </div>
+</div>
+       
+    </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const title = document.getElementById("animated-title");
+  const text = title.textContent;
+  title.textContent = "";
+
+  text.split("").forEach((char, index) => {
+    const span = document.createElement("span");
+    span.textContent = char;
+    span.classList.add("animated-letter");
+    title.appendChild(span);
+
+    setTimeout(() => {
+      span.classList.add("show");
+    }, index * 150); // delay per letter
+  });
+});
+</script>
+
+{% endblock %}

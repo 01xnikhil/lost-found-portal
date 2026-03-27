@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="hero container text-center mt-5 pt-5">
+    <h1>ALL ITEMS</h1>
+    <p>Browse items reported by users with their status</p>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        {% for item in items %}
+        <div class="col-md-4 col-sm-6">
+            <div class="item-card">
+                <div class="item-image" 
+     style="
+        height:200px;
+        background-image: url('{{ item.image.url }}');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: #f5f5f5;
+     ">
+</div>
+                <div class="item-content">
+                    <h4>{{ item.title }}</h4>
+                    <p>{{ item.description }}</p>
+                    <p><b>Location:</b> {{ item.location }}</p>
+                    <p><b>Status:</b>
+                        {% if item.status == 'found' %}
+                        <span class="status found">Found ✅</span>
+                        {% else %}
+                        <span class="status lost">Lost ❌</span>
+                        {% endif %}
+                    </p>
+                    {% if user.is_authenticated %}
+
+                  <button> <a href="{% url 'chat_view' item.id %}">💬 Chat with Owner</a> </button
+
+{% else %}
+
+
+{% endif %}
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-center mt-4">No items found.</p>
+        {% endfor %}
+    </div>
+</div>
+<!-- Notification container -->
+<div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+<script>particlesJS("particles-js", {
+  particles: {
+    number: { value: 80 },
+    size: { value: 3 },
+    move: { speed: 2 },
+    line_linked: { enable: true }
+  }
+});
+
+function loginAlert(){
+
+alert("Please login first to chat with the owner.");
+
+window.location.href="/login/";
+
+}
+
+function showRoomPopup(room_name, item_title){
+    const container = document.getElementById('notification-container');
+    const popup = document.createElement('div');
+
+    popup.innerHTML = `
+        <div style="
+            background:#4CAF50; color:white; padding:15px; margin:5px;
+            border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.3);
+            display:flex; justify-content:space-between; align-items:center; cursor:pointer;">
+            <span>Chat room ready for <b>${item_title}</b>!</span>
+            <button style="
+                background:white; color:#4CAF50; border:none; padding:5px 10px;
+                border-radius:5px; cursor:pointer;">Chat</button>
+        </div>
+    `;
+
+    // Chat button click → open chat page
+    popup.querySelector('button').onclick = function(e){
+        e.stopPropagation();
+        window.location.href = '/chat/' + room_name + '/';
+    }
+
+    container.appendChild(popup);
+
+    // Auto remove after 8 seconds
+    setTimeout(() => {
+        popup.remove();
+    }, 8000);
+}
+function checkForRooms(item_id){
+    fetch(`/chat/check_match/${item_id}/`)
+    .then(res => res.json())
+    .then(data => {
+        data.rooms.forEach(room => {
+            showRoomPopup(room.room_name, room.item_title);
+        });
+    });
+}
+
+// Example call: after user posts item
+checkForRooms({{ item.id }}); 
+
+</script>
+
+{% endblock %}

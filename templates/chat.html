@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+.chat-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: #111;
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+   
+}
+
+.chat-header {
+    font-size: 20px;
+    color: white;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 5px;
+}
+
+.chat-box {
+    height: 350px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #000;
+    border-radius: 10px;
+    
+}
+
+.message {
+    padding: 8px 12px;
+    margin: 5px 0;
+    border-radius: 10px;
+    max-width: 70%;
+    word-wrap: break-word;
+}
+
+.sent {
+    background: #4CAF50;
+    color: white;
+    margin-left: auto;
+    text-align: right;
+}
+
+.received {
+    background: #333;
+    color: white;
+    margin-right: auto;
+}
+
+.chat-input {
+    display: flex;
+    margin-top: 10px;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.chat-input button {
+    padding: 10px 15px;
+    margin-left: 5px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.chat-input button:hover {
+    background: #45a049;
+}
+</style>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        💬 Chat about: {{ item.title }}
+    </div>
+
+    <div class="chat-box" id="chat-box">
+        {% for msg in messages %}
+            <div class="message {% if msg.sender == request.user %}sent{% else %}received{% endif %}">
+                <b>{{ msg.sender.username|title }}</b><br>
+                {{ msg.message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <form method="post" class="chat-input">
+        {% csrf_token %}
+        <input type="text" name="message" id="msgInput" placeholder="Type message...">
+        <button type="submit">Send</button>
+    </form>
+
+</div>
+
+<script>
+// auto scroll bottom
+let chatBox = document.getElementById("chat-box");
+chatBox.scrollTop = chatBox.scrollHeight;
+
+// enter press se send
+document.getElementById("msgInput").addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+        e.preventDefault();
+        this.form.submit();
+    }
+});
+</script>
+
+{% endblock %}
